@@ -1,93 +1,57 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿// 3. Дан целочисленный двумерный массив, размерности n х m. Найти сумму и произведение элементов, кратных 3 и 5.
 
-//Дан целочисленный двумерный массив, размерности n х m. Найти сумму и произведение четных элементов.
-void SetArray2D(int[,] a)
+void SetArr2D(int[,] arr)
 {
-    for(int i=0;i<a.GetLength(0);i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for(int j=0;j<a.GetLength(1);j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            a[i,j]=i*10+j+1;
+            Random rnd = new Random();
+            arr[i, j] = rnd.Next(15, 91);
         }
     }
 }
-
-
-void Print(int[,] a)
+void Print(int[,] arr)
 {
-    for(int i=0;i<a.GetLength(0);i++)
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for(int j=0;j<a.GetLength(1);j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-            Console.Write($"{a[i,j],4}");
+            Console.Write($"{arr[i, j],3}");
         }
         Console.WriteLine();
     }
 }
 
-//Дан целочисленный двумерный массив, размерности n х m. Найти сумму и произведение четных элементов.
-void Task02(int[,] a,out int sum,out int multi)
-{   
-    sum=0;
-    multi=1;
-    for(int i=0;i<a.GetLength(0);i++)
+
+void Task03(int[,] arr, out int sum, out int multi)
+{
+    sum = 0;
+    multi = 1;
+    for (int i = 0; i < arr.GetLength(0); i++)
     {
-        for(int j=0;j<a.GetLength(1);j++)
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
-        if (a[i,j]%2==0) {sum=sum+a[i,j]; multi=multi*a[i,j];}
+            if (arr[i, j] % 15 == 0)
+            {
+                sum += arr[i, j];
+                multi *= arr[i, j];
+            }
         }
     }
 }
 
-
-
-int[,] a;
-a=new int[3,4];
-
-
-SetArray2D(a);
-Print(a);
-int s,m;
-Task02(a,out s,out m);
-Console.WriteLine ($"{s}  {m}");
-
-//Дан целочисленный двумерный массив, размерности n х m. Найти сумму и произведение элементов, кратных 3 и 5.
- void Task03(int[,] a,out int sum,out int multi)
-{   
-    sum=0;
-    multi=1;
-    for(int i=0;i<a.GetLength(0);i++)
-    {
-        for(int j=0;j<a.GetLength(1);j++)
-        {
-        if (a[i,j]%3==0 && a[i,j]%5==0) {sum=sum+a[i,j]; multi=multi*a[i,j];}
-        }
-    }
+int[,] Arr2D = new int[3, 4];
+SetArr2D(Arr2D);
+Print(Arr2D);
+int s, m;
+Task03(Arr2D, out s, out m);
+if (s > 0 && m > 1)
+{
+    Console.WriteLine($"Сумма элементов кратных 3 и 5 = {s}");
+    Console.WriteLine($"Произведение элементов кратных 3 и 5 = {m}");
 }
-//Дан целочисленный двумерный массив, размерности n х m. Найти количество отрицательных элементов, больше -9.
-
- void Task04(int[,] a,out int count)
-{   
-    count=0;
-   
-    for(int i=0;i<a.GetLength(0);i++)
-    {
-        for(int j=0;j<a.GetLength(1);j++)
-        {
-        if (a[i,j]>-9 && a[i,j]<0) {count+=1;} // count=count+1;
-        }
-    }
-}
-//Дан целочисленный двумерный массив, размерности n х m. Найти номера нечетных элементов, стоящих на четных местах. 
- void Task05(int[,] a)
-{   
-    
-    for(int i=0;i<a.GetLength(0);i++)
-    {
-        for(int j=0;j<a.GetLength(1);j++)
-        {
-        if (i%2==0 && j%2==0 && a[i,j]%2!=0) {Console.WriteLine($"{i,2},{j,2} = {a[i,j],4}");} 
-        }
-    }
+else
+{
+    Console.WriteLine("Таких элементов нет");
 }
