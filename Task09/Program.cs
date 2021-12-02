@@ -31,12 +31,12 @@ void Task09(int[,] array)
         {
             if (array[i,j] > 0)
             {
-                Console.WriteLine($"В {i+1}-й строке раньше встречается положительное число");
+                Console.WriteLine($"Положительное {i+1}");
                 break;
             }
             else if (array[i,j] < 0)
             {
-                Console.WriteLine($"В {i+1}-й строке раньше встречается отрицательное число");
+                Console.WriteLine($"Отрицательное {i+1}");
                 break;
             }
         }
@@ -48,3 +48,4 @@ SetArray2D(array2D);
 PrintArray(array2D);
 Console.WriteLine();
 Task09(array2D);
+
