@@ -24,26 +24,29 @@ void PrintArray(int[,] array)
     }
 }
 
-void ExchangeStrings(int[,] array)
+void SortStrings(int[,] array)
 {
     int s;
     for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1) - 1; j++)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            if (array[i, j + 1] > array[i, j])
+            for (int n = 0; n < array.GetLength(1) - 1; n++)
             {
-                s = array[i, j];
-                array[i, j] = array[i, j + 1];
-                array[i, j + 1] = s;
+                if (array[i, n + 1] > array[i, n])
+                {
+                    s = array[i, n];
+                    array[i, n] = array[i, n + 1];
+                    array[i, n + 1] = s;
+                }
             }
         }
     }
 }
 
-int[,] array2D = new int[4, 5];
+int[,] array2D = new int[5, 5];
 FillArray(array2D);
 PrintArray(array2D);
 Console.WriteLine();
-ExchangeStrings(array2D);
+SortStrings(array2D);
 PrintArray(array2D);
