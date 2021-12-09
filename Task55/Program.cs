@@ -7,7 +7,7 @@ void FillArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = rnd.Next(10);
+            array[i, j] = rnd.Next(100);
         }
     }
 }
@@ -18,7 +18,7 @@ void PrintArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"{array[i, j],4}");
+            Console.Write($"{array[i, j],6}");
         }
         Console.WriteLine();
     }
@@ -26,7 +26,7 @@ void PrintArray(int[,] array)
 
 void AverageColumn(int[,] array, int s)
 {
-    int sum = 0;
+    double sum = 0;
     for (int i = 0; i < array.GetLength(0); i++)
     {
         for (int j = 0; j < array.GetLength(1); j++)
@@ -37,13 +37,14 @@ void AverageColumn(int[,] array, int s)
             }
         }
     }
-    Console.Write($"{sum,4}");
+    Console.Write($"{sum/array.GetLength(1),6:f1}");
 }
 
 int[,] array2D = new int[5, 5];
 int s = 0;
 FillArray(array2D);
 PrintArray(array2D);
+System.Console.WriteLine("Среднее арифметическое столбца:");
 while (s < array2D.GetLength(1))
 {
     AverageColumn(array2D, s);
