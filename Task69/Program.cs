@@ -2,10 +2,11 @@
 
 int Summa(int m, int n)
 {
-    if (m==n) return n;
-    else return m + Summa((m+1), n);
+    if (m < n) return m + Summa((m + 1), n);
+    if (m > n) return m + Summa((m - 1), n);
+    else return m;
 }
 
-int M = 1;
-int N = 10;
-System.Console.WriteLine(Summa(M,N));
+int M = 10;
+int N = 5;
+System.Console.WriteLine(Summa(M, N));
