@@ -1,4 +1,6 @@
-﻿int i = 0;
+﻿// 71 Написать программу вычисления функции Аккермана
+
+int i = 0;
 int A(int m, int n)
 {
     i++;
@@ -8,5 +10,5 @@ int A(int m, int n)
     return A(m, n);
 }
 
-System.Console.WriteLine(A(3, 10));
+System.Console.WriteLine(A(3, 5));
 System.Console.WriteLine(i);
